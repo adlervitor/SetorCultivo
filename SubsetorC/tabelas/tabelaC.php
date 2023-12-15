@@ -3,7 +3,7 @@
 // Configurações do banco de dados
 $host = "localhost";
 $user = "root";
-$password = "1234";
+$password = "";
 $dbname = "setorcultivo";
 
 try {
