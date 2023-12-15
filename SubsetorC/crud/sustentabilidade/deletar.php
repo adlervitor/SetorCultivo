@@ -19,8 +19,6 @@ try {
 
     // Chamada da função para deletar registros
     deletarSustentabilidade($conn, 1);
-    deletarSustentabilidade($conn, 2);
-    deletarSustentabilidade($conn, 3);
 
 } catch (Exception $e) {
     echo "Erro na execução das operações: " . $e->getMessage();

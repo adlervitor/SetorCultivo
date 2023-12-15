@@ -2,7 +2,7 @@
 // Configurações do banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "";
 $dbname = "setorcultivo";
 
 try {
@@ -19,8 +19,6 @@ try {
 
     // Chamada da função para deletar registros
     deletarOutrasFontesBiomassa($conn, 1);
-    deletarOutrasFontesBiomassa($conn, 2);
-    deletarOutrasFontesBiomassa($conn, 3);
 
 } catch (Exception $e) {
     echo "Erro na execução das operações: " . $e->getMessage();

@@ -18,8 +18,6 @@ try {
 
     //chamada de função para deletar registros
     deletarusoAgroquimicos($conexao, 1);
-    deletarusoAgroquimicos($conexao, 2);
-    deletarusoAgroquimicos($conexao, 3);
 
     // Mensagem para confirmar a exclusão dos itens
 } catch (Exception $e) {

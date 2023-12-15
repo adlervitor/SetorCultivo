@@ -12,13 +12,13 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexao->exec("USE $dbname;");
 
-    function inserirBiomassa($tipo_biomassa, $metodo_cultivo, $producao_estimada, $conexao){
-        $sql = "INSERT INTO outras_fontes_biomassa (tipo_biomassa, metodo_cultivo, producao_estimada) VALUES (?, ?, ?)";    
+    function inserirSustentabilidade($praticas_ambientais, $reducao_residuos, $energia_renovavel, $conexao){
+        $sql = "INSERT INTO sustentabilidade (praticas_ambientais, reducao_residuos, energia_renovavel) VALUES (?, ?, ?)";    
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$tipo_biomassa, $metodo_cultivo, $producao_estimada]);     
+        $stmt->execute([$praticas_ambientais, $reducao_residuos, $energia_renovavel]);     
     }
 
-    inserirBiomassa('Fossilica', 'Colheita', 90.75, $conexao);
+    inserirSustentabilidade('reciclagem', 80.25, 'compostagem', $conexao);
 
     echo "Dados inseridos com sucesso!";
 } catch(PDOException $e) {

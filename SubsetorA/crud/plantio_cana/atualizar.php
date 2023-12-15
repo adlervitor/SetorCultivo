@@ -19,8 +19,6 @@ try {
 
     // Chamada da função para atualizar
     echo atualizarPlantioCana(1, '2020-12-24', 10000, 'Cerrado', $conn) . "<br>";
-    echo atualizarPlantioCana(2, '2019-11-12', 5000, 'Mineira', $conn) . "<br>";
-    echo atualizarPlantioCana(3, '2015-09-05', 2500, 'Seca', $conn) . "<br>";
 
     $conn = null;
 

@@ -29,18 +29,14 @@ try {
         $stmt->execute();
     }
 
-    // uso da função para atualizar registros em outras_fontes_biomassa
+    // Uso da função para atualizar registros em outras_fontes_biomassa
     atualizarOutrasFontesBiomassa($conn, 4, 'Novo Tipo', 'Novo Método', 150.50);
-    atualizarOutrasFontesBiomassa($conn, 5, 'Outro Tipo', 'Outro Método', 200.75);
-    atualizarOutrasFontesBiomassa($conn, 6, 'Tipo Atualizado', 'Método Atualizado', 180.25);
 
-    // Mensagem indicando que os registros foram atualizados com sucesso
     echo "Registros atualizados com sucesso!";
 } catch (Exception $e) {
     // Mensagem de erro caso ocorra uma exceção durante o processo
     echo "Erro na atualização: " . $e->getMessage();
 } finally {
-    // Fecha a conexão com o banco de dados, independentemente de qualquer exceção
     $conn = null;
 }
 ?>

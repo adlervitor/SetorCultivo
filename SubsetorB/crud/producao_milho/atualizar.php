@@ -19,8 +19,6 @@
         return "Produção de milho atualizada com sucesso!";
     }
     echo atualizarDadosMilho(4, '2023-12-02', 10000 , "Milho de Pipoca", $conn) . "<br>";
-    echo atualizarDadosMilho(5, '2022-11-01', 25000, "Milho de Canjica", $conn) . "<br>";
-    echo atualizarDadosMilho(6, '2020-07-27', 5000, "Milho Verde", $conn) . "<br>";
     
     $conn = null;
 

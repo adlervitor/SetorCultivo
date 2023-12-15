@@ -10,13 +10,13 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexao->exec("USE $dbname;");
 
-    // Inserir dados na tabela clima_terreno
-    $sql_clima = "INSERT INTO clima_terreno (tipo_solo, regiao_climatica, nivel_pluviometrico) VALUES 
-    ('Árido', 'Cerrado', 300),
-    ('Vermelho', 'Floresta', 100),
-    ('Molhado', 'Pancadas de Chuva', 150)";
-
-    $conexao->exec($sql_clima);
+    function inserirClimaTerreno($tipo_solo, $regiao_climatica, $nivel_pluviometrico, $conexao){
+        $sql = "INSERT INTO clima_terreno (tipo_solo, regiao_climatica, nivel_pluviometrico) VALUES (?, ?, ?)";    
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$tipo_solo, $regiao_climatica, $nivel_pluviometrico]);     
+    }
+    
+    echo inserirClimaTerreno('Árido', 'Cerrado', 300, $conexao);
 
     echo "Dados inseridos com sucesso!";
 } catch(PDOException $e) {

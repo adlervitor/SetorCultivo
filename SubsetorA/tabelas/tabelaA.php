@@ -4,7 +4,7 @@
 $host = 'localhost'; 
 $dbname = 'setorcultivo'; 
 $user = 'root';
-$password = '1234'; 
+$password = ''; 
 
 try {
     $conexao = new PDO("mysql:host=$host", $user, $password);

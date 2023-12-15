@@ -18,8 +18,6 @@ try {
     }
 
     echo atualizarClima(1, 'Branco', 'Minas', 80, $conn) . "<br>";
-    echo atualizarClima(2, 'Danos', 'Mato Grosso', 800, $conn) . "<br>";
-    echo atualizarClima(3, 'Azul', 'Lago', 200, $conn) . "<br>";
 
     $conn = null;
 

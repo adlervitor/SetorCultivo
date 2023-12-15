@@ -17,7 +17,6 @@ try {
                 SET praticas_ambientais = :praticas_ambientais, reducao_residuos = :reducao_residuos, energia_renovavel = :energia_renovavel 
                 WHERE id = :id";
 
-        // Prepara a declaração SQL para execução
         $stmt = $conn->prepare($sql);
 
         // Vincula os parâmetros da consulta aos valores fornecidos
@@ -32,16 +31,12 @@ try {
 
     // Uso da função para atualizar registros em sustentabilidade
     atualizarSustentabilidade($conn, 1, 'Novas Práticas', 'Menos Resíduos', 'Energia Solar');
-    atualizarSustentabilidade($conn, 2, 'Outras Práticas', 'Reciclagem', 'Energia Eólica');
-    atualizarSustentabilidade($conn, 3, 'Práticas Atualizadas', 'Redução de Resíduos', 'Hidrelétrica');
 
     // Mensagem indicando que os registros foram atualizados com sucesso
     echo "Registros atualizados com sucesso!";
 } catch (Exception $e) {
-    // Mensagem de erro caso ocorra uma exceção durante o processo
     echo "Erro na atualização: " . $e->getMessage();
 } finally {
-    // Fecha a conexão com o banco de dados, independentemente de qualquer exceção
     $conn = null;
 }
 ?>

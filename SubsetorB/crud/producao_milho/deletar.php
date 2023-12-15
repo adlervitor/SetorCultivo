@@ -19,8 +19,6 @@
     
         // Chamada da função para deletar registros
         deletarMilho($conexao, 1);
-        deletarMilho($conexao, 2);
-        deletarMilho($conexao, 3);
 
         // Mensagem para confirmar a exclusão dos itens
         } catch (Exception $e) {

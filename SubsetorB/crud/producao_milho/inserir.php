@@ -4,7 +4,7 @@
     $host = "localhost";
     $dbname = "setorcultivo";
     $user = "root";
-    $password = "1234";
+    $password = "";
 
     try{
         $conexao = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
@@ -13,12 +13,13 @@
         
         // Dados para inserir as tabelas
 
-        $sql_milho = "INSERT INTO producao_milho (data_plantio, colheita_prevista, tipo_milho) VALUES 
-        ('2021-08-20', 2000, 'Pipoca'),
-        ('2023-03-10', 3500, 'Canjica'),
-        ('2022-12-15', 10000, 'Vermelho')";
+        function inserirMilho($data_plantio, $colheita_prevista, $tipo_milho, $conexao){
+            $sql = "INSERT INTO producao_milho (data_plantio, colheita_prevista, tipo_milho) VALUES (?, ?, ?)";    
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute([$data_plantio, $colheita_prevista, $tipo_milho]);     
+        }
     
-        $conexao->exec($sql_milho);
+        echo inserirMilho('2020-12-12', 20000, 'Milho Verde', $conexao);
     
         // Mensagem para confirmar a criação da tabela
         echo "Dados inseridos com sucesso!\n";

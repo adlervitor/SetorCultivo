@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "1234";
 $dbname = "setorcultivo";
 
 try {
@@ -10,15 +10,14 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Função para deletar um registro de plantio de cana
-    function deletarPlantioCana($conn) {
-        $id_plantio_excluir = 1;
-        $sql = "DELETE FROM plantio_cana WHERE id = $id_plantio_excluir";
+    function deletarPlantioCana($conn, $id) {
+        $sql = "DELETE FROM plantio_cana WHERE id = $id";
         $conn->exec($sql);
         echo "Plantio deletado da tabela.";
     }
 
     // Chamada da função para deletar registros
-    deletarPlantioCana($conn);
+    deletarPlantioCana($conn, 1);
 
 } catch (Exception $e) {
     echo "Erro na execução das operações: " . $e->getMessage();
