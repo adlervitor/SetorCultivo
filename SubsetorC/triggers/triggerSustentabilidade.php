@@ -15,24 +15,24 @@ try {
         AFTER INSERT ON sustentabilidade
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_sustentabilidade (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Inserção', CURRENT_USER());
+            INSERT INTO log_sustentabilidade (id, data_modificacao, alteracao, usuario)
+            VALUES (NEW.id, NOW(), 'Inserção', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_upd_sustentabilidade
         AFTER UPDATE ON sustentabilidade
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_sustentabilidade (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Atualização', CURRENT_USER());
+            INSERT INTO log_sustentabilidade (id, data_modificacao, alteracao, usuario)
+            VALUES (NEW.id, NOW(), 'Atualização', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_del_sustentabilidade
         AFTER DELETE ON sustentabilidade
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_sustentabilidade (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Exclusão', CURRENT_USER());
+            INSERT INTO log_sustentabilidade (id, data_modificacao, alteracao, usuario)
+            VALUES (NEW.id, NOW(), 'Exclusão', 'root@localhost');
         END;
     ";
 

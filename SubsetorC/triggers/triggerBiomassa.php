@@ -15,24 +15,24 @@ try {
         AFTER INSERT ON outras_fontes_biomassa
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_outras_fontes_biomassa (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Inserção', CURRENT_USER());
+            INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
+            VALUES (NEW.id, NOW(), 'Inserção', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_upd_outras_fontes_biomassa
         AFTER UPDATE ON outras_fontes_biomassa
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_outras_fontes_biomassa (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Atualização', CURRENT_USER());
+            INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
+            VALUES (NEW.id, NOW(), 'Atualização', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_del_outras_fontes_biomassa
         AFTER DELETE ON outras_fontes_biomassa
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_outras_fontes_biomassa (data_modificacao, alteracao, usuario)
-            VALUES (NOW(), 'Exclusão', CURRENT_USER());
+            INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
+            VALUES (OLD.id, NOW(), 'Exclusão', 'root@localhost');
         END;
     ";
 
