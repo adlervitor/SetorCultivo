@@ -16,7 +16,7 @@ try {
         FOR EACH ROW
         BEGIN
             INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
-            VALUES (NEW.id, NOW(), 'Inserção', 'root@localhost');
+            VALUES (NEW.id, CURRENT_TIMESTAMP, 'Inserção', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_upd_outras_fontes_biomassa
@@ -24,7 +24,7 @@ try {
         FOR EACH ROW
         BEGIN
             INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
-            VALUES (NEW.id, NOW(), 'Atualização', 'root@localhost');
+            VALUES (NEW.id, CURRENT_TIMESTAMP, 'Atualização', 'root@localhost');
         END;
 
         CREATE TRIGGER tr_del_outras_fontes_biomassa
@@ -32,7 +32,7 @@ try {
         FOR EACH ROW
         BEGIN
             INSERT INTO log_outras_fontes_biomassa (id, data_modificacao, alteracao, usuario)
-            VALUES (OLD.id, NOW(), 'Exclusão', 'root@localhost');
+            VALUES (OLD.id, CURRENT_TIMESTAMP, 'Exclusão', 'root@localhost');
         END;
     ";
 

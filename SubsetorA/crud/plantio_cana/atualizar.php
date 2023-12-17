@@ -9,16 +9,16 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Função para atualizar dados na tabela 'plantio_cana'
-    function atualizarPlantioCana($id, $data_plantio, $area_plantada, $tipo_cana, $conn) {
-        $sql = "UPDATE plantio_cana SET data_plantio=?, area_plantada=?, tipo_cana=? WHERE id=?";
+    function atualizarPlantioCana($id, $data_plantio, $area_plantada, $tipo_cana, $id_clima_terreno, $conn) {
+        $sql = "UPDATE plantio_cana SET data_plantio=?, area_plantada=?, tipo_cana=?, id_clima_terreno=? WHERE id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$data_plantio, $area_plantada, $tipo_cana, $id]);
+        $stmt->execute([$data_plantio, $area_plantada, $tipo_cana, $id_clima_terreno, $id]);
 
         return "Registro de plantio de cana atualizado com sucesso!";
     }
 
     // Chamada da função para atualizar
-    echo atualizarPlantioCana(1, '2020-12-24', 10000, 'Cerrado', $conn) . "<br>";
+    echo atualizarPlantioCana(1, '2020-12-24', 10000, 'Cerrado', 1, $conn) . "<br>";
 
     $conn = null;
 

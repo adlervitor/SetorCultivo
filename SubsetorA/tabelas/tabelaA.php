@@ -23,17 +23,20 @@ try {
     $conexao->exec("USE $dbname;");
     
     //Criando as tabelas
-    $queryTabelas = "CREATE TABLE IF NOT EXISTS plantio_cana (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        data_plantio DATE NOT NULL,
-        area_plantada INT NOT NULL,
-        tipo_cana VARCHAR(255) NOT NULL
-    );
+    $queryTabelas = "
     CREATE TABLE IF NOT EXISTS clima_terreno (
         id INT AUTO_INCREMENT PRIMARY KEY,
         tipo_solo VARCHAR(255) NOT NULL,
         regiao_climatica VARCHAR(255) NOT NULL,
         nivel_pluviometrico INT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS plantio_cana (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        data_plantio DATE NOT NULL,
+        area_plantada INT NOT NULL,
+        tipo_cana VARCHAR(255) NOT NULL,
+        id_clima_terreno INT,
+        FOREIGN KEY (id_clima_terreno) REFERENCES clima_terreno(id) ON DELETE SET NULL
     );";
 
     $conexao->exec($queryTabelas);

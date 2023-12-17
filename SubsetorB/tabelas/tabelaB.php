@@ -23,18 +23,22 @@
         $conexao->exec("USE $dbname;");
 
         // Criando as tabelas
-        $queryTabelas = "CREATE TABLE IF NOT EXISTS producao_milho (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            data_plantio DATE NOT NULL,
-            colheita_prevista INT NOT NULL,
-            tipo_milho VARCHAR(100) NOT NULL
-        );
+        $queryTabelas = "
         CREATE TABLE IF NOT EXISTS uso_agroquimicos (
             id INT AUTO_INCREMENT PRIMARY KEY ,
             tipo_produto VARCHAR(255) NOT NULL,
             quantidade_utilizada DECIMAL (10,2) NOT NULL,
             impacto_ambiental VARCHAR(255) NOT NULL
-        );";
+        );
+        CREATE TABLE IF NOT EXISTS producao_milho (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            data_plantio DATE NOT NULL,
+            colheita_prevista INT NOT NULL,
+            tipo_milho VARCHAR(100) NOT NULL,
+            id_uso_agroquimicos INT,
+            FOREIGN KEY (id_uso_agroquimicos) REFERENCES uso_agroquimicos(id) ON DELETE SET NULL
+        );
+        ";
 
     $conexao->exec($queryTabelas);
 

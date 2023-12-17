@@ -7,7 +7,7 @@ $password = "";
 $dbname = "setorcultivo";
 
 try {
-    $conexao = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
+    $conexao = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); 
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Trigger AFTER INSERT na tabela uso_agroquimicos
@@ -15,8 +15,8 @@ try {
     AFTER INSERT ON uso_agroquimicos 
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_uso_agroquimicos (id, tipo_produto, quantidade_utilizada, impacto_ambiental)
-        VALUES (NEW.id, 'Inseticida', 2000, 'Impacto na água e solo');
+        INSERT INTO log_uso_agroquimicos (id, data_modificacao, alteracao, usuario)
+        VALUES (NEW.id, CURRENT_TIMESTAMP, 'Inserção', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerAgroquimicos);
@@ -26,8 +26,8 @@ try {
     AFTER UPDATE ON uso_agroquimicos 
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_uso_agroquimicos (id, tipo_produto, quantidade_utilizada, impacto_ambiental)
-        VALUES (NEW.id, 'Inseticida', 500, 'Impacto na água e solo');
+        INSERT INTO log_uso_agroquimicos (id, data_modificacao, alteracao, usuario)
+        VALUES (NEW.id, CURRENT_TIMESTAMP, 'Atualização', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerAgroquimicosUpdate);
@@ -37,8 +37,8 @@ try {
     AFTER DELETE ON uso_agroquimicos
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_uso_agroquimicos (id, tipo_produto, quantidade_utilizada, impacto_ambiental)
-        VALUES (OLD.id, 'Inseticida', 1000, 'Impacto na água e solo');
+        INSERT INTO log_uso_agroquimicos (id, data_modificacao, alteracao, usuario)
+        VALUES (OLD.id, CURRENT_TIMESTAMP, 'Exclusão', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerAgroquimicosDelete);

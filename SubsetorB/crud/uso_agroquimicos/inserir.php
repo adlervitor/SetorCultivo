@@ -18,7 +18,7 @@ try {
         $stmt->execute([$tipo_produto, $quantidade_utilizada, $impacto_ambiental]);     
     }
 
-    echo inserirAgroquimicos('Inseticidas', 50, 'Contaminação da água e solo', $conexao);
+    echo inserirAgroquimicos('Inseticidas', 50.2, 'Contaminação da água e solo', $conexao);
 
     echo "Dados inseridos com sucesso!";
 } catch(PDOException $e) {

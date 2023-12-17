@@ -13,13 +13,13 @@
         
         // Dados para inserir as tabelas
 
-        function inserirMilho($data_plantio, $colheita_prevista, $tipo_milho, $conexao){
-            $sql = "INSERT INTO producao_milho (data_plantio, colheita_prevista, tipo_milho) VALUES (?, ?, ?)";    
+        function inserirMilho($data_plantio, $colheita_prevista, $tipo_milho, $id_uso_agroquimicos, $conexao){
+            $sql = "INSERT INTO producao_milho (data_plantio, colheita_prevista, tipo_milho, id_uso_agroquimicos) VALUES (?, ?, ?, ?)";    
             $stmt = $conexao->prepare($sql);
-            $stmt->execute([$data_plantio, $colheita_prevista, $tipo_milho]);     
+            $stmt->execute([$data_plantio, $colheita_prevista, $tipo_milho, $id_uso_agroquimicos]);     
         }
     
-        echo inserirMilho('2020-12-12', 20000, 'Milho Verde', $conexao);
+        echo inserirMilho('2020-12-12', 20000, 'Milho Verde', 1, $conexao);
     
         // Mensagem para confirmar a criação da tabela
         echo "Dados inseridos com sucesso!\n";

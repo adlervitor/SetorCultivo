@@ -11,14 +11,14 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Função para atualizar dados na tabela
-        function atualizarDadosMilho($id, $data_plantio, $colheita_prevista, $tipo_milho, $conn) {
-        $sql = "UPDATE producao_milho SET data_plantio=?, colheita_prevista=?, tipo_milho=? WHERE id=?";
+        function atualizarDadosMilho($id, $data_plantio, $colheita_prevista, $tipo_milho, $id_uso_agroquimicos, $conn) {
+        $sql = "UPDATE producao_milho SET data_plantio=?, colheita_prevista=?, tipo_milho=?, id_uso_agroquimicos=? WHERE id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$data_plantio, $colheita_prevista, $tipo_milho, $id]);
+        $stmt->execute([$data_plantio, $colheita_prevista, $tipo_milho, $id_uso_agroquimicos, $id]);
 
         return "Produção de milho atualizada com sucesso!";
     }
-    echo atualizarDadosMilho(4, '2023-12-02', 10000 , "Milho de Pipoca", $conn) . "<br>";
+    echo atualizarDadosMilho(3, '2023-12-02', 10000 , "Milho de Pipoca", 1, $conn) . "<br>";
     
     $conn = null;
 

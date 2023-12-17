@@ -10,10 +10,10 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Função para atualizar registros na tabela outras_fontes_biomassa
-    function atualizarOutrasFontesBiomassa($conn, $id, $tipoBiomassa, $metodoCultivo, $producaoEstimada) {
+    function atualizarOutrasFontesBiomassa($conn, $id, $tipoBiomassa, $metodoCultivo, $producaoEstimada, $id_sustentabilidade) {
         // Query SQL para atualizar registros na tabela outras_fontes_biomassa
         $sql = "UPDATE outras_fontes_biomassa 
-                SET tipo_biomassa = :tipo, metodo_cultivo = :metodo, producao_estimada = :producao 
+                SET tipo_biomassa = :tipo, metodo_cultivo = :metodo, producao_estimada = :producao, id_sustentabilidade = :sustentabilidade
                 WHERE id = :id";
 
         // Prepara a declaração SQL para execução
@@ -23,6 +23,7 @@ try {
         $stmt->bindParam(':tipo', $tipoBiomassa);
         $stmt->bindParam(':metodo', $metodoCultivo);
         $stmt->bindParam(':producao', $producaoEstimada);
+        $stmt->bindParam(':sustentabilidade', $id_sustentabilidade);
         $stmt->bindParam(':id', $id);
         
         // Executa a consulta preparada
@@ -30,7 +31,7 @@ try {
     }
 
     // Uso da função para atualizar registros em outras_fontes_biomassa
-    atualizarOutrasFontesBiomassa($conn, 4, 'Novo Tipo', 'Novo Método', 150.50);
+    atualizarOutrasFontesBiomassa($conn, 1, 'Novo Tipo', 'Novo Método', 150.50, 1);
 
     echo "Registros atualizados com sucesso!";
 } catch (Exception $e) {

@@ -15,8 +15,8 @@ try {
     AFTER INSERT ON producao_milho 
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_producao_milho (id, data_plantio, colheita_prevista, tipo_milho)
-        VALUES (NEW.id, CURRENT_TIMESTAMP, 2000, 'TipoDoMilho');
+    INSERT INTO log_producao_milho (id, data_modificacao, alteracao, usuario)
+        VALUES (NEW.id, CURRENT_TIMESTAMP, 'Inserção', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerMilho);
@@ -26,8 +26,8 @@ try {
     AFTER UPDATE ON producao_milho 
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_producao_milho (id, data_plantio, colheita_prevista, tipo_milho)
-        VALUES (NEW.id, CURRENT_TIMESTAMP, 20000, 'TipoDoMilho');
+        INSERT INTO log_producao_milho (id, data_modificacao, alteracao, usuario)
+        VALUES (NEW.id, CURRENT_TIMESTAMP, 'Atualização', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerMilhoUpdate);
@@ -37,8 +37,8 @@ try {
     AFTER DELETE ON producao_milho
     FOR EACH ROW 
     BEGIN
-        INSERT INTO log_producao_milho (id, data_plantio, colheita_prevista, tipo_milho)
-        VALUES (OLD.id, CURRENT_TIMESTAMP, 1000, 'TipoDoMilho');
+    INSERT INTO log_producao_milho (id, data_modificacao, alteracao, usuario)
+        VALUES (OLD.id, CURRENT_TIMESTAMP, 'Exclusão', 'NomeDoUsuario');
     END;";
     
     $conexao->exec($queryTriggerMilhoDelete);
